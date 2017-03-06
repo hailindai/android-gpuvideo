@@ -3,7 +3,6 @@ package com.dreamguard.sample;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Surface;
@@ -11,6 +10,8 @@ import android.view.Surface;
 import com.dreamguard.gpuvideo.GPUVideoView;
 import com.dreamguard.gpuvideo.IVideoSurface;
 import com.dreamguard.gpuvideo.filter.test.GPUFilterTest;
+import com.dreamguard.gpuvideo.filter.test.GPUFilterTest2;
+import com.dreamguard.gpuvideo.filter.textureoes.GPUVideoPixelationFilter;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -40,8 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 //        videoView.setFilter(new GPUVideoGammaFilter());
-//        videoView.setFilter(new GPUVideoColorInvertFilter());
-        videoView.setFilter(new GPUFilterTest());
+        GPUVideoPixelationFilter filter = new GPUVideoPixelationFilter();
+        filter.setPixel(20);
+        videoView.setFilter(filter);
+//        videoView.setFilter(new GPUFilterTest2());
 
     }
     public void initPlayer(SurfaceTexture surfaceTexture){
