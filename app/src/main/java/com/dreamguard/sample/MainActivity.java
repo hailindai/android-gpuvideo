@@ -2,6 +2,7 @@ package com.dreamguard.sample;
 
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayer = new MediaPlayer();
 
         try {
-//            mediaPlayer.setDataSource(this, Uri.parse("android.resource://" + getPackageName() + "/" +R.raw.girl4));
-            mediaPlayer.setDataSource(Environment.getExternalStorageDirectory().getAbsolutePath()+"/s.mp4");
+            mediaPlayer.setDataSource(this, Uri.parse("android.resource://" + getPackageName() + "/" +R.raw.girl4));
+//            mediaPlayer.setDataSource(Environment.getExternalStorageDirectory().getAbsolutePath()+"/s.mp4");
             Surface s = new Surface(surfaceTexture);
             mediaPlayer.setSurface(s);
             s.release();
