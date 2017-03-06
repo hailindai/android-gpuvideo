@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package com.dreamguard.gpuvideo.filter;
+package com.dreamguard.gpuvideo.filter.texture2d;
 
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
 
 /**
  * Invert all the colors in the image.
  */
-public class GPUVideoColorInvertFilter extends GPUVideoFilter {
+public class GPUVideoColorInvertFilter2D extends GPUVideoFilter {
     public static final String COLOR_INVERT_FRAGMENT_SHADER = "" +
             "#extension GL_OES_EGL_image_external : require\n" +
             "varying highp vec2 textureCoordinate;\n" +
             "\n" +
-            "uniform samplerExternalOES inputTexture;\n" +
+            "uniform sampler2D inputTexture;\n" +
             "\n" +
             "void main()\n" +
             "{\n" +
@@ -35,7 +35,7 @@ public class GPUVideoColorInvertFilter extends GPUVideoFilter {
             "    gl_FragColor = vec4((1.0 - textureColor.rgb), textureColor.w);\n" +
             "}";
 
-    public GPUVideoColorInvertFilter() {
+    public GPUVideoColorInvertFilter2D() {
         super(NO_FILTER_VERTEX_SHADER, COLOR_INVERT_FRAGMENT_SHADER);
     }
 }

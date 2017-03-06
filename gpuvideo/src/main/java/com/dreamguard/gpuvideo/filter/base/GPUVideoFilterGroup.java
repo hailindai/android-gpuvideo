@@ -77,7 +77,7 @@ public class GPUVideoFilterGroup extends GPUVideoFilter {
                 .asFloatBuffer();
         mGLTextureBuffer.put(TEXTURE_NO_ROTATION).position(0);
 
-        float[] flipTexture = TextureRotationUtil.getRotation(Rotation.NORMAL, false, false);
+        float[] flipTexture = TextureRotationUtil.getRotation(Rotation.NORMAL, false, true);
         mGLTextureFlipBuffer = ByteBuffer.allocateDirect(flipTexture.length * 4)
                 .order(ByteOrder.nativeOrder())
                 .asFloatBuffer();
