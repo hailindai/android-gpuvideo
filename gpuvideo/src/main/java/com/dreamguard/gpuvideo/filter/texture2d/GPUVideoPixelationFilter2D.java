@@ -21,7 +21,7 @@ import android.opengl.GLES20;
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
 
 /**
- * Applies a grayscale effect to the image.
+ * Applies a pixelation effect to the image.
  */
 public class GPUVideoPixelationFilter2D extends GPUVideoFilter {
     public static final String PIXELATION_FRAGMENT_SHADER = "" +

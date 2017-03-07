@@ -25,7 +25,6 @@ import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
  */
 public class GPUVideoGammaFilter2D extends GPUVideoFilter {
     public static final String GAMMA_FRAGMENT_SHADER = "" +
-            "#extension GL_OES_EGL_image_external : require\n" +
             "varying highp vec2 textureCoordinate;\n" +
             " \n" +
             " uniform sampler2D inputTexture;\n" +
@@ -42,7 +41,7 @@ public class GPUVideoGammaFilter2D extends GPUVideoFilter {
     private float mGamma;
 
     public GPUVideoGammaFilter2D() {
-        this(2.8f);
+        this(1.0f);
     }
 
     public GPUVideoGammaFilter2D(final float gamma) {
@@ -63,7 +62,13 @@ public class GPUVideoGammaFilter2D extends GPUVideoFilter {
     }
 
     public void setGamma(final float gamma) {
-        mGamma = gamma;
+        if(gamma < 0.0f){
+            mGamma = 0.0f;
+        }else if(gamma > 3.0f){
+            mGamma = 3.0f;
+        }else {
+            mGamma = gamma;
+        }
         setFloat(mGammaLocation, mGamma);
     }
 }

@@ -21,55 +21,51 @@ import android.opengl.GLES20;
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
 
 /**
- * gamma value ranges from 0.0 to 3.0, with 1.0 as the normal level
+ * Changes the contrast of the image.<br>
+ * <br>
+ * contrast value ranges from 0.0 to 4.0, with 1.0 as the normal level
  */
-public class GPUVideoGammaFilter extends GPUVideoFilter {
-    public static final String GAMMA_FRAGMENT_SHADER = "" +
+public class GPUVideoContrastFilter extends GPUVideoFilter {
+    public static final String CONTRAST_FRAGMENT_SHADER = "" +
             "#extension GL_OES_EGL_image_external : require\n" +
             "varying highp vec2 textureCoordinate;\n" +
             " \n" +
             " uniform samplerExternalOES inputTexture;\n" +
-            " uniform lowp float gamma;\n" +
+            " uniform lowp float contrast;\n" +
             " \n" +
             " void main()\n" +
             " {\n" +
             "     lowp vec4 textureColor = texture2D(inputTexture, textureCoordinate);\n" +
             "     \n" +
-            "     gl_FragColor = vec4(pow(textureColor.rgb, vec3(gamma)), textureColor.w);\n" +
+            "     gl_FragColor = vec4(((textureColor.rgb - vec3(0.5)) * contrast + vec3(0.5)), textureColor.w);\n" +
             " }";
 
-    private int mGammaLocation;
-    private float mGamma;
+    private int mContrastLocation;
+    private float mContrast;
 
-    public GPUVideoGammaFilter() {
-        this(1.0f);
+    public GPUVideoContrastFilter() {
+        this(1.2f);
     }
 
-    public GPUVideoGammaFilter(final float gamma) {
-        super(NO_FILTER_VERTEX_SHADER, GAMMA_FRAGMENT_SHADER);
-        mGamma = gamma;
+    public GPUVideoContrastFilter(float contrast) {
+        super(NO_FILTER_VERTEX_SHADER, CONTRAST_FRAGMENT_SHADER);
+        mContrast = contrast;
     }
 
     @Override
     public void onInit() {
         super.onInit();
-        mGammaLocation = GLES20.glGetUniformLocation(getProgram(), "gamma");
+        mContrastLocation = GLES20.glGetUniformLocation(getProgram(), "contrast");
     }
 
     @Override
     public void onInitialized() {
         super.onInitialized();
-        setGamma(mGamma);
+        setContrast(mContrast);
     }
 
-    public void setGamma(final float gamma) {
-        if(gamma < 0.0f){
-            mGamma = 0.0f;
-        }else if(gamma > 3.0f){
-            mGamma = 3.0f;
-        }else {
-            mGamma = gamma;
-        }
-        setFloat(mGammaLocation, mGamma);
+    public void setContrast(final float contrast) {
+        mContrast = contrast;
+        setFloat(mContrastLocation, mContrast);
     }
 }

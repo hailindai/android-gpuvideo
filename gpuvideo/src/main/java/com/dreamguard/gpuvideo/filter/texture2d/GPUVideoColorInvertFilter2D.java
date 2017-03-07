@@ -23,7 +23,6 @@ import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
  */
 public class GPUVideoColorInvertFilter2D extends GPUVideoFilter {
     public static final String COLOR_INVERT_FRAGMENT_SHADER = "" +
-            "#extension GL_OES_EGL_image_external : require\n" +
             "varying highp vec2 textureCoordinate;\n" +
             "\n" +
             "uniform sampler2D inputTexture;\n" +
