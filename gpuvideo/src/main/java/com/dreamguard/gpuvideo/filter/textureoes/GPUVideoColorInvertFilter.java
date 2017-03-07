@@ -20,6 +20,7 @@ import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
 
 /**
  * Invert all the colors in the image.
+ *
  */
 public class GPUVideoColorInvertFilter extends GPUVideoFilter {
     public static final String COLOR_INVERT_FRAGMENT_SHADER = "" +

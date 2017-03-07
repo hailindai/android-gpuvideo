@@ -15,12 +15,12 @@ import com.dreamguard.gpuvideo.filter.base.GPUVideoFilterGroup;
  * email:hailin.dai@wz-tech.com
  */
 
-public class GPUFilterTest extends GPUVideoFilterGroup {
+public class GPUGroupFilterTest extends GPUVideoFilterGroup {
 
     GPUVideoColorInvertFilter invertFilter;
     GPUVideoGammaFilter gammaFilter;
 
-    public GPUFilterTest() {
+    public GPUGroupFilterTest() {
 
         addFilter(new GPUVideoFilter());
         addFilter(new GPUVideoContrastFilter2D());

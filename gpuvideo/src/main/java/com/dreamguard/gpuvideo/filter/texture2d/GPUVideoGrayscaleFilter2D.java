@@ -14,34 +14,32 @@
  * limitations under the License.
  */
 
-package com.dreamguard.gpuvideo.filter.test;
+package com.dreamguard.gpuvideo.filter.texture2d;
 
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
 
 /**
- * Invert all the colors in the image.
+ * Applies a grayscale effect to the image.
  */
-public class GPUFilterTest22D extends GPUVideoFilter {
-    public static final String COLOR_TEST_FRAGMENT_SHADER = "" +
-            "#extension GL_OES_EGL_image_external : require\n" +
-            "precision mediump float;\n"+
+public class GPUVideoGrayscaleFilter2D extends GPUVideoFilter {
+    public static final String GRAYSCALE_FRAGMENT_SHADER = "" +
+            "precision highp float;\n" +
+            "\n" +
             "varying vec2 textureCoordinate;\n" +
             "\n" +
             "uniform sampler2D inputTexture;\n" +
             "\n" +
+            "const highp vec3 W = vec3(0.2125, 0.7154, 0.0721);\n" +
+            "\n" +
             "void main()\n" +
             "{\n" +
-            "		 vec2 tc = textureCoordinate;\n"
-            + "		float xx = floor(gl_FragCoord.x);\n"
-		    + "		if(mod(xx,2.0) <= 0.0001){\n"
-		    + "			tc.s = tc.s*0.5 + 0.5; \n"
-		    + "		}else{\n"
-		    + "			tc.s = tc.s*0.5;\n"
-		    + "		}\n"
-            + "  gl_FragColor = texture2D(inputTexture, tc);\n"
-            + "}";
+            "  lowp vec4 textureColor = texture2D(inputTexture, textureCoordinate);\n" +
+            "  float luminance = dot(textureColor.rgb, W);\n" +
+            "\n" +
+            "  gl_FragColor = vec4(vec3(luminance), textureColor.a);\n" +
+            "}";
 
-    public GPUFilterTest22D() {
-        super(NO_FILTER_VERTEX_SHADER, COLOR_TEST_FRAGMENT_SHADER);
+    public GPUVideoGrayscaleFilter2D() {
+        super(NO_FILTER_VERTEX_SHADER, GRAYSCALE_FRAGMENT_SHADER);
     }
 }
