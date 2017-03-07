@@ -17,9 +17,6 @@ import com.dreamguard.gpuvideo.filter.base.GPUVideoFilterGroup;
 
 public class GPUGroupFilterTest extends GPUVideoFilterGroup {
 
-    GPUVideoColorInvertFilter invertFilter;
-    GPUVideoGammaFilter gammaFilter;
-
     public GPUGroupFilterTest() {
 
         addFilter(new GPUVideoFilter());

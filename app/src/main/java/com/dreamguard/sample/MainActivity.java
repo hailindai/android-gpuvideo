@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
+    protected void onPause() {
         super.onResume();
         stopPlayer();
     }

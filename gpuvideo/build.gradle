@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -18,6 +18,18 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    task makeJar(type: proguard.gradle.ProGuardTask, dependsOn: "build") {
+        injars 'build/intermediates/bundles/release/classes.jar'
+        outjars 'build/gpuvideo.jar'
+        configuration 'proguard.txt'
+    }
+
+    task makeAar(type: proguard.gradle.ProGuardTask, dependsOn: "build") {
+        injars 'build/outputs/aar/eyetrack-release.aar'
+        outjars 'build/EyeTrack.aar'
+        configuration 'proguard.txt'
     }
 }
 
