@@ -14,6 +14,6 @@ repositories {
 
 dependencies {
 
-    compile 'com.github.hailindai:android-gpuvideo:v1.0.0'
+    compile 'com.github.hailindai:android-gpuvideo:v1.0.1'
     
 }
