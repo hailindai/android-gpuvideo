@@ -19,11 +19,12 @@ package com.dreamguard.gpuvideo.filter.texture2d;
 import android.opengl.GLES20;
 
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
+import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter2D;
 
 /**
  * gamma value ranges from 0.0 to 3.0, with 1.0 as the normal level
  */
-public class GPUVideoGammaFilter2D extends GPUVideoFilter {
+public class GPUVideoGammaFilter2D extends GPUVideoFilter2D {
     public static final String GAMMA_FRAGMENT_SHADER = "" +
             "varying highp vec2 textureCoordinate;\n" +
             " \n" +

@@ -19,11 +19,12 @@ package com.dreamguard.gpuvideo.filter.texture2d;
 import android.opengl.GLES20;
 
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
+import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter2D;
 
 /**
  * Applies a pixelation effect to the image.
  */
-public class GPUVideoPixelationFilter2D extends GPUVideoFilter {
+public class GPUVideoPixelationFilter2D extends GPUVideoFilter2D {
     public static final String PIXELATION_FRAGMENT_SHADER = "" +
             "precision highp float;\n" +
 

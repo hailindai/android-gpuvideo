@@ -19,11 +19,12 @@ package com.dreamguard.gpuvideo.filter.texture2d;
 import android.opengl.GLES20;
 
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
+import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter2D;
 
 /**
  * brightness value ranges from -1.0 to 1.0, with 0.0 as the normal level
  */
-public class GPUVideoBrightnessFilter2D extends GPUVideoFilter {
+public class GPUVideoBrightnessFilter2D extends GPUVideoFilter2D {
     public static final String BRIGHTNESS_FRAGMENT_SHADER = "" +
             "varying highp vec2 textureCoordinate;\n" +
             " \n" +

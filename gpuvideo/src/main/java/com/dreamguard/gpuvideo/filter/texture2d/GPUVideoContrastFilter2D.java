@@ -19,13 +19,14 @@ package com.dreamguard.gpuvideo.filter.texture2d;
 import android.opengl.GLES20;
 
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
+import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter2D;
 
 /**
  * Changes the contrast of the image.<br>
  * <br>
  * contrast value ranges from 0.0 to 4.0, with 1.0 as the normal level
  */
-public class GPUVideoContrastFilter2D extends GPUVideoFilter {
+public class GPUVideoContrastFilter2D extends GPUVideoFilter2D {
     public static final String CONTRAST_FRAGMENT_SHADER = "" +
             "#extension GL_OES_EGL_image_external : require\n" +
             "varying highp vec2 textureCoordinate;\n" +

@@ -17,11 +17,12 @@
 package com.dreamguard.gpuvideo.filter.texture2d;
 
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
+import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter2D;
 
 /**
  * Applies a grayscale effect to the image.
  */
-public class GPUVideoGrayscaleFilter2D extends GPUVideoFilter {
+public class GPUVideoGrayscaleFilter2D extends GPUVideoFilter2D {
     public static final String GRAYSCALE_FRAGMENT_SHADER = "" +
             "precision highp float;\n" +
             "\n" +

@@ -19,11 +19,12 @@ package com.dreamguard.gpuvideo.filter.texture2d;
 import android.opengl.GLES20;
 
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
+import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter2D;
 
 /**
  * Applies a ColorMatrix to the image.
  */
-public class GPUVideoColorMatrixFilter2D extends GPUVideoFilter {
+public class GPUVideoColorMatrixFilter2D extends GPUVideoFilter2D {
     public static final String COLOR_MATRIX_FRAGMENT_SHADER = "" +
             "varying highp vec2 textureCoordinate;\n" +
             "\n" +

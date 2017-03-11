@@ -17,11 +17,12 @@
 package com.dreamguard.gpuvideo.filter.texture2d;
 
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
+import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter2D;
 
 /**
  * Invert all the colors in the image.
  */
-public class GPUVideoColorInvertFilter2D extends GPUVideoFilter {
+public class GPUVideoColorInvertFilter2D extends GPUVideoFilter2D {
     public static final String COLOR_INVERT_FRAGMENT_SHADER = "" +
             "varying highp vec2 textureCoordinate;\n" +
             "\n" +

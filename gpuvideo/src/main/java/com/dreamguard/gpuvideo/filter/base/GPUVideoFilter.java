@@ -19,6 +19,7 @@ package com.dreamguard.gpuvideo.filter.base;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.PointF;
+import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 
 import com.dreamguard.gpuvideo.OpenGlUtils;
@@ -59,7 +60,7 @@ public class GPUVideoFilter {
     protected int mGLAttribTextureCoordinate;
     protected int mOutputWidth;
     protected int mOutputHeight;
-    private boolean mIsInitialized;
+    protected boolean mIsInitialized;
 
     public GPUVideoFilter() {
         this(NO_FILTER_VERTEX_SHADER, NO_FILTER_FRAGMENT_SHADER);
@@ -120,14 +121,14 @@ public class GPUVideoFilter {
         GLES20.glEnableVertexAttribArray(mGLAttribTextureCoordinate);
         if (textureId != OpenGlUtils.NO_TEXTURE) {
             GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
-            GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textureId);
+            GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, textureId);
             GLES20.glUniform1i(mGLUniformTexture, 0);
         }
         onDrawArraysPre();
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4);
         GLES20.glDisableVertexAttribArray(mGLAttribPosition);
         GLES20.glDisableVertexAttribArray(mGLAttribTextureCoordinate);
-        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, 0);
+        GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, 0);
     }
 
 

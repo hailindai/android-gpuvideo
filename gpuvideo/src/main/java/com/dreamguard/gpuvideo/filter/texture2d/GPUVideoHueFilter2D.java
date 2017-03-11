@@ -19,8 +19,9 @@ package com.dreamguard.gpuvideo.filter.texture2d;
 import android.opengl.GLES20;
 
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
+import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter2D;
 
-public class GPUVideoHueFilter2D extends GPUVideoFilter {
+public class GPUVideoHueFilter2D extends GPUVideoFilter2D {
     public static final String HUE_FRAGMENT_SHADER = "" +
       "precision highp float;\n" +
       "varying highp vec2 textureCoordinate;\n" +
