@@ -22,6 +22,7 @@ import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
 
 /**
  * brightness value ranges from -1.0 to 1.0, with 0.0 as the normal level
+ * 亮度
  */
 public class GPUVideoBrightnessFilter extends GPUVideoFilter {
     public static final String BRIGHTNESS_FRAGMENT_SHADER = "" +

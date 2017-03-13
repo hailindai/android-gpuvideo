@@ -22,6 +22,7 @@ import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
 
 /**
  * gamma value ranges from 0.0 to 3.0, with 1.0 as the normal level
+ * pow亮度值
  */
 public class GPUVideoGammaFilter extends GPUVideoFilter {
     public static final String GAMMA_FRAGMENT_SHADER = "" +

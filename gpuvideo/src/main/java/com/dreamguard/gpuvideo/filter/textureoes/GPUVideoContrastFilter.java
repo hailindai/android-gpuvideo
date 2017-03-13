@@ -24,6 +24,7 @@ import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
  * Changes the contrast of the image.<br>
  * <br>
  * contrast value ranges from 0.0 to 4.0, with 1.0 as the normal level
+ * 对比度
  */
 public class GPUVideoContrastFilter extends GPUVideoFilter {
     public static final String CONTRAST_FRAGMENT_SHADER = "" +

@@ -10,6 +10,7 @@ import android.view.Surface;
 import com.dreamguard.gpuvideo.GPUVideoView;
 import com.dreamguard.gpuvideo.IVideoSurface;
 import com.dreamguard.gpuvideo.filter.test.GPUGroupFilterTest;
+import com.dreamguard.gpuvideo.filter.textureoes.GPUVideoColorInvertFilter;
 import com.dreamguard.gpuvideo.filter.textureoes.GPUVideoContrastFilter;
 import com.dreamguard.gpuvideo.filter.textureoes.GPUVideoGrayscaleFilter;
 import com.dreamguard.gpuvideo.filter.textureoes.GPUVideoSepiaFilter;
@@ -27,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         videoView = (GPUVideoView)findViewById(R.id.videoView);
-
         initGPUVideoView();
 
     }
@@ -40,14 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 initPlayer(surfaceTexture);
             }
         });
-
-
-//        videoView.setFilter(new GPUVideoGammaFilter());
-//        GPUVideoPixelationFilter filter = new GPUVideoPixelationFilter();
-//        filter.setPixel(1000f);
-//        videoView.setFilter(filter);
-//        videoView.setFilter(new GPUVideoContrastFilter());
-        videoView.setFilter(new GPUGroupFilterTest());
+        videoView.setFilter(new GPUVideoColorInvertFilter());
     }
     public void initPlayer(SurfaceTexture surfaceTexture){
 

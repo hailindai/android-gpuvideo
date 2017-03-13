@@ -20,6 +20,7 @@ import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
 
 /**
  * Applies a grayscale effect to the image.
+ * 灰度级
  */
 public class GPUVideoGrayscaleFilter extends GPUVideoFilter {
     public static final String GRAYSCALE_FRAGMENT_SHADER = "" +

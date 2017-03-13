@@ -18,6 +18,7 @@ package com.dreamguard.gpuvideo.filter.textureoes;
 
 /**
  * Applies a simple sepia effect.
+ * 棕镜
  */
 public class GPUVideoSepiaFilter extends GPUVideoColorMatrixFilter {
 

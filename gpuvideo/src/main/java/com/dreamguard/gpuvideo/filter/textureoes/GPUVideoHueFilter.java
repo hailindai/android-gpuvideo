@@ -20,6 +20,10 @@ import android.opengl.GLES20;
 
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
 
+/**
+ * 色调
+ */
+
 public class GPUVideoHueFilter extends GPUVideoFilter {
     public static final String HUE_FRAGMENT_SHADER = "" +
       "#extension GL_OES_EGL_image_external : require\n" +

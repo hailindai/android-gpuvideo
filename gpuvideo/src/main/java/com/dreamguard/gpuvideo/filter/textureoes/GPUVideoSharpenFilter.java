@@ -21,7 +21,10 @@ import android.opengl.GLES20;
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
 
 /**
- * Sharpens the picture. <br>
+ * Sharpens the picture. <br>’
+ * Sharpen(锐化)是Photoshop的内置滤镜之一！
+ * 锐化就是使图片的局部清晰一些，但一定要适度。锐化不是万能的，很容易使东西不真实
+ * Sharpen(锐化) 滤镜通过增加相邻像素的对比度来使模糊图像变清晰。
  * <br>
  * sharpness: from -4.0 to 4.0, with 0.0 as the normal level
  */

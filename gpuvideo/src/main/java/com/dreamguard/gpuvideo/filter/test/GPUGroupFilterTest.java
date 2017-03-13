@@ -1,6 +1,7 @@
 package com.dreamguard.gpuvideo.filter.test;
 
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
+import com.dreamguard.gpuvideo.filter.texture2d.GPUVideoColorInvertFilter2D;
 import com.dreamguard.gpuvideo.filter.texture2d.GPUVideoContrastFilter2D;
 import com.dreamguard.gpuvideo.filter.base.GPUVideoFilterGroup;
 
@@ -15,6 +16,7 @@ public class GPUGroupFilterTest extends GPUVideoFilterGroup {
 
         addFilter(new GPUVideoFilter());
         addFilter(new GPUVideoContrastFilter2D());
+        addFilter(new GPUVideoColorInvertFilter2D());
 
     }
 }

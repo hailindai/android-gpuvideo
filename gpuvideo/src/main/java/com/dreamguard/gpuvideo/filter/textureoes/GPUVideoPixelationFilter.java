@@ -22,6 +22,7 @@ import com.dreamguard.gpuvideo.filter.base.GPUVideoFilter;
 
 /**
  * Applies a pixelation effect to the image.
+ * 像素化
  */
 public class GPUVideoPixelationFilter extends GPUVideoFilter {
     public static final String PIXELATION_FRAGMENT_SHADER = "" +
