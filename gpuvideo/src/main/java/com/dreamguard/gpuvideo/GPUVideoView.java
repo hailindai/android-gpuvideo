@@ -95,4 +95,8 @@ public class GPUVideoView extends GLSurfaceView {
         return mRenderer.getFilter();
     }
 
+    public String getVersion(){
+        return GPUVideoConst.Version;
+    }
+
 }

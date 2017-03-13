@@ -38,7 +38,7 @@ import static com.dreamguard.gpuvideo.TextureRotationUtil.TEXTURE_NO_ROTATION;
 
 @TargetApi(11)
 public class GPUVideoRenderer implements Renderer,SurfaceTexture.OnFrameAvailableListener{
-    public static final int NO_IMAGE = -1;
+    public static final int NO_VIDEO = -1;
     public static final float CUBE[] = {
             -1.0f, -1.0f,
             1.0f, -1.0f,
@@ -48,7 +48,7 @@ public class GPUVideoRenderer implements Renderer,SurfaceTexture.OnFrameAvailabl
 
     private GPUVideoFilter mFilter;
 
-    private int mGLTextureId = NO_IMAGE;
+    private int mGLTextureId = NO_VIDEO;
     private SurfaceTexture mSurfaceTexture = null;
     private final FloatBuffer mGLCubeBuffer;
     private final FloatBuffer mGLTextureBuffer;
@@ -106,6 +106,7 @@ public class GPUVideoRenderer implements Renderer,SurfaceTexture.OnFrameAvailabl
 
     public int initTex() {
         final int[] tex = new int[1];
+        GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
         GLES20.glGenTextures(1, tex, 0);
         GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, tex[0]);
         GLES20.glTexParameteri(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,
@@ -133,14 +134,14 @@ public class GPUVideoRenderer implements Renderer,SurfaceTexture.OnFrameAvailabl
     public void onDrawFrame(final GL10 gl) {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 
+        runAll(mRunOnDraw);
+        mFilter.onDraw(mGLTextureId, mGLCubeBuffer, mGLTextureBuffer);
+        runAll(mRunOnDrawEnd);
+
         if (mSurfaceTexture != null) {
             mSurfaceTexture.updateTexImage();
 //            mSurfaceTexture.getTransformMatrix(mStMatrix);
         }
-
-        runAll(mRunOnDraw);
-        mFilter.onDraw(mGLTextureId, mGLCubeBuffer, mGLTextureBuffer);
-        runAll(mRunOnDrawEnd);
 
 
     }
