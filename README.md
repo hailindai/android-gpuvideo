@@ -40,7 +40,7 @@ Gradle dependency
         mediaPlayer = new MediaPlayer();
 
         try {
-            mediaPlayer.setDataSource(this, Uri.parse("android.resource://" + getPackageName() + "/" +R.raw.girl4));
+            mediaPlayer.setDataSource(this, Uri.parse("android.resource://" + getPackageName() + "/" +R.raw.mv));
             Surface s = new Surface(surfaceTexture);
             mediaPlayer.setSurface(s);
             s.release();
