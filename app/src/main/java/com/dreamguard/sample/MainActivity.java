@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
     public void stopPlayer() {
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
+            mediaPlayer.release();
         }
     }
 
@@ -87,6 +88,13 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1 && resultCode == RESULT_OK && null != data) {
             Uri selectedVideo = data.getData();
             String videoPath = selectedVideo.getPath();
+            if(mSurfaceTexture == null){
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
             initPlayer(mSurfaceTexture, videoPath);
         }
     }
