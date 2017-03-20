@@ -17,7 +17,7 @@ Gradle dependency
     }
 
     dependencies {
-        compile 'com.github.hailindai:android-gpuvideo:1.1.0'
+        compile 'com.github.hailindai:android-gpuvideo:v1.1.1'
     }
 
 <h2>Sample Code</h2>
