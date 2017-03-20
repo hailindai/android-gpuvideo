@@ -25,7 +25,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
     testCompile 'junit:junit:4.12'
     compile project(':gpuvideo')
-    compile 'com.android.support:design:24.0.0-alpha2'
 }

@@ -1,11 +1,9 @@
 package com.dreamguard.sample;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Surface;
@@ -13,7 +11,10 @@ import android.view.Surface;
 import com.dreamguard.gpuvideo.GPUVideoView;
 import com.dreamguard.gpuvideo.IVideoSurface;
 
-import com.dreamguard.gpuvideo.filter.textureoes.GPUVideoSobelEdgeDetection;
+import com.dreamguard.gpuvideo.filter.test.GPUGroupFilterTest;
+import com.dreamguard.gpuvideo.filter.textureoes.GPUVideoMonochromeFilter;
+import com.dreamguard.gpuvideo.filter.textureoes.GPUVideoOpacityFilter;
+import com.dreamguard.gpuvideo.filter.textureoes.GPUVideoRGBFilter;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -48,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        videoView.setFilter(new GPUVideoSobelEdgeDetection());
+        videoView.setFilter(new GPUVideoRGBFilter(1,0,0));
+        videoView.setFilter(new GPUGroupFilterTest());
     }
 
     public void initPlayer(SurfaceTexture surfaceTexture, String path) {
