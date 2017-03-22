@@ -13,7 +13,10 @@ import com.dreamguard.gpuvideo.GPUVideoView;
 import com.dreamguard.gpuvideo.IVideoSurface;
 
 import com.dreamguard.gpuvideo.filter.base.GPUVideoBitmapInputFilter;
+import com.dreamguard.gpuvideo.filter.base.GPUVideoBitmapInputFilter2D;
+import com.dreamguard.gpuvideo.filter.base.GPUVideoFilterGroup;
 import com.dreamguard.gpuvideo.filter.test.GPUGroupFilterTest;
+import com.dreamguard.gpuvideo.filter.textureoes.GPUVideoColorInvertFilter;
 import com.dreamguard.gpuvideo.filter.textureoes.GPUVideoMonochromeFilter;
 import com.dreamguard.gpuvideo.filter.textureoes.GPUVideoOpacityFilter;
 import com.dreamguard.gpuvideo.filter.textureoes.GPUVideoRGBFilter;
@@ -51,9 +54,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        GPUVideoBitmapInputFilter filter = new GPUVideoBitmapInputFilter();
+        GPUVideoColorInvertFilter invertFilter = new GPUVideoColorInvertFilter();
+        GPUVideoBitmapInputFilter2D filter = new GPUVideoBitmapInputFilter2D();
         filter.setBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
-        videoView.setFilter(filter);
+
+        GPUVideoFilterGroup filterGroup = new GPUVideoFilterGroup();
+        filterGroup.addFilter(invertFilter);
+        filterGroup.addFilter(filter);
+        videoView.setFilter(filterGroup);
     }
 
     public void initPlayer(SurfaceTexture surfaceTexture, String path) {
