@@ -38,12 +38,6 @@ public class MainActivity extends AppCompatActivity {
         videoView = (GPUVideoView) findViewById(R.id.videoView);
 
         initGPUVideoView();
-
-
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("video/*");
-        startActivityForResult(intent, 1);
-
     }
 
     public void initGPUVideoView() {
@@ -51,25 +45,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCreated(SurfaceTexture surfaceTexture) {
                 mSurfaceTexture = surfaceTexture;
+                initPlayer(mSurfaceTexture);
             }
         });
 
         GPUVideoColorInvertFilter invertFilter = new GPUVideoColorInvertFilter();
-        GPUVideoBitmapInputFilter2D filter = new GPUVideoBitmapInputFilter2D();
-        filter.setBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
-
-        GPUVideoFilterGroup filterGroup = new GPUVideoFilterGroup();
-        filterGroup.addFilter(invertFilter);
-        filterGroup.addFilter(filter);
-        videoView.setFilter(filterGroup);
+        videoView.setFilter(invertFilter);
     }
 
-    public void initPlayer(SurfaceTexture surfaceTexture, String path) {
+    public void initPlayer(SurfaceTexture surfaceTexture) {
 
         mediaPlayer = new MediaPlayer();
 
         try {
-            mediaPlayer.setDataSource(path);
+            mediaPlayer.setDataSource(this, Uri.parse("android.resource://" + getPackageName() + "/" +R.raw.wwmxd));
             Surface s = new Surface(surfaceTexture);
             mediaPlayer.setSurface(s);
             s.release();
@@ -82,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onResume();
+    protected void onDestroy() {
+        super.onDestroy();
         stopPlayer();
     }
 
@@ -91,24 +80,6 @@ public class MainActivity extends AppCompatActivity {
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
             mediaPlayer.release();
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 1 && resultCode == RESULT_OK && null != data) {
-            Uri selectedVideo = data.getData();
-            String videoPath = selectedVideo.getPath();
-            if(mSurfaceTexture == null){
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            initPlayer(mSurfaceTexture, videoPath);
         }
     }
 }
