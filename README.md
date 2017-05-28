@@ -5,7 +5,7 @@ Goal is to have something as similar to GPUImage as possible.
 
 <h2>Requirements</h2>
 
-    Android 2.2 or higher (OpenGL ES 2.0)
+    Android 4.0 or higher (OpenGL ES 2.0)
 
 <h2>Usage</h2>
 
